@@ -58,7 +58,8 @@ function onLoadMoreBtn() {
 
   fetchImages(query, page, perPage)
     .then(({ data }) => {
-      createMarkup(data.hits);
+      gallery.insertAdjacentHTML('beforeend', createMarkup(data.hits))
+      // gallery.innerHTML = createMarkup(data.hits)
       simpleLightBox = new SimpleLightbox('.gallery a').refresh();
 
       const totalPages = Math.ceil(data.totalHits / perPage);
